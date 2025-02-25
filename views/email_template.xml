@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="email_template_verification" model="mail.template">
+            <field name="name">Email Verification</field>
+            <field name="email_from">rouf.shaik@shinesfashions.com</field>
+            <field name="subject">Verify your email address</field>
+            <field name="model_id" ref="model_agent_details"/>
+            <field name="body_html">
+               <![CDATA[
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); overflow: hidden;">
+        <!-- Header Section -->
+        <div style="background-color: #71648e; color: white; padding: 15px; display: flex; align-items: center; justify-content: space-between;">
+            <h1 style="margin: 0; font-size: 22px; font-weight: bold;">Email Verification</h1>
+  
+        </div>
+
+        <!-- Body Section -->
+        <div style="padding: 20px; text-align: left; line-height: 1.6;">
+            <p style="margin: 0 0 15px; font-size: 16px; color: #333;">Hello,</p>
+            <p style="margin: 0 0 20px; font-size: 16px;">Please verify your email address by clicking the button below:</p>
+
+            <!-- Button -->
+            <div style="text-align: center; margin: 25px 0;">
+                <a href="${verification_link}" style="
+                    display: inline-block;
+                    background-color: #4CAF50;
+                    color: #fff;
+                    font-size: 16px;
+                    padding: 12px 25px;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    font-weight: bold;">
+                    Verify Email
+                </a>
+            </div>
+
+            <!-- Fallback Link -->
+            <p style="margin: 0 0 10px; font-size: 14px; color: #666;">If you cannot click the button, copy and paste the following link into your browser:</p>
+            <p style="margin: 0; word-wrap: break-word; color: #007BFF; font-size: 14px;">
+                ${verification_link}
+            </p>
+
+            <p style="margin: 20px 0 0; font-size: 14px; color: #333;">Thank you!</p>
+        </div>
+
+        <!-- Footer Section -->
+        <div style="background-color: #f7f7f7; padding: 10px; text-align: center; font-size: 12px; color: #888;">
+            <p style="margin: 0;">© 2024 Real Estate, All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- Media Query for Responsiveness -->
+    <style>
+        @media (max-width: 600px) {
+            h1 { font-size: 18px !important; }
+            img { height: 30px !important; width: 30px !important; }
+            a { font-size: 14px !important; padding: 10px 20px !important; }
+            p { font-size: 14px !important; }
+            div[style*="padding: 20px"] { padding: 15px !important; }
+        }
+    </style>
+]]>
+
+
+            </field>
+        </record>
+    </data>
+</odoo>
+

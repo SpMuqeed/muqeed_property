@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <template id="registration_success">
+    <t t-call="website.layout">
+        <div class="container">
+            <h2>Registration Successful!</h2>
+            <p>Thank you, <t t-esc="agent_name"/>. Your account has been created.</p>
+            <p>Email: <t t-esc="email"/></p>
+            <p>Password: <t t-esc="password"/></p>
+            <a href="/web/login" class="btn btn-primary">Login Now</a>
+        </div>
+    </t>
+</template>
+        <record id="template_error" model="ir.ui.view">
+        <field name="name">Template Error</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-name="muqeed_property.template_error">
+                <div>
+                    <h1>Error: Template Not Found</h1>
+                    <p>The requested template is missing.</p>
+                </div>
+            </t>
+        </field>
+    </record>
+          <template id="template_error">
+        <t t-call="website.layout">
+            <div class="container">
+                <h1>Error</h1>
+                <p>An error occurred during registration.</p>
+            </div>
+        </t>
+    </template>
+    </data>
+</odoo>

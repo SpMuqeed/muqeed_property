@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_form_agent_details" model="ir.ui.view">
+        <field name="name">agent.details.form</field>
+        <field name="model">agent.details</field>
+        <field name="arch" type="xml">
+            <form string="Agent Details">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                        <field name="email_verified" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_verify_email" string="Send Verification Email" type="object"
+                                class="btn-primary"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_list_agent_details" model="ir.ui.view">
+        <field name="name">agent.details.list</field>
+        <field name="model">agent.details</field>
+        <field name="arch" type="xml">
+            <list string="Agent Details">
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="email_verified"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_agent_details" model="ir.actions.act_window">
+        <field name="name">Agent Details</field>
+        <field name="res_model">agent.details</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_agent_details" name="Agent Details" parent="estate_main_menu" action="action_agent_details"/>
+</odoo>

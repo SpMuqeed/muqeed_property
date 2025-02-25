@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem
+            id="estate_main_menu"
+            name="My Estate"
+            sequence="1"
+    />
+
+    <record model="ir.ui.view" id="property_features_menu_list">
+        <field name="name">property.features.list</field>
+        <field name="model">property.features</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="icon"/>
+                <field name="color"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form view for the estate property -->
+    <record model="ir.ui.view" id="property_features_menu_form">
+        <field name="name">property.features.form</field>
+        <field name="model">property.features</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="icon"/>
+                        <field name="color"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_property_features" model="ir.actions.act_window">
+        <field name="name">Features</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">property.features</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <menuitem id="property_features_menu" name="Property Features" parent="estate_main_menu"
+              action="action_property_features" sequence="2"/>
+
+
+    <record id="action_contact_us_messages" model="ir.actions.act_window">
+        <field name="name">Contact Us Messages</field>
+        <field name="res_model">contact.us.message</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_contact_us_message_list" model="ir.ui.view">
+        <field name="name">contact.us.message.list</field>
+        <field name="model">contact.us.message</field>
+        <field name="type">list</field> <!-- Add this line -->
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="submission_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View for Contact Us Messages -->
+    <record id="view_contact_us_message_form" model="ir.ui.view">
+        <field name="name">contact.us.message.form</field>
+        <field name="model">contact.us.message</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="message"/>
+                        <field name="submission_date" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Menu item to access the contact messages -->
+    <menuitem id="menu_contact_us" name="Contact Us" parent="estate_main_menu" sequence="10"/>
+
+    <!-- Submenu for Contact Us Messages -->
+    <menuitem id="menu_contact_us_messages"
+              name="Messages"
+              parent="menu_contact_us"
+              action="action_contact_us_messages"
+              sequence="10"/>
+
+
+
+
+      <record id="view_property_interested_message_list" model="ir.ui.view">
+        <field name="name">property.interested.message.list</field>
+        <field name="model">property.interested.message</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="property_id"/>
+                <field name="submission_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View for Property Interested Messages -->
+    <record id="view_property_interested_message_form" model="ir.ui.view">
+        <field name="name">property.interested.message.form</field>
+        <field name="model">property.interested.message</field>
+        <field name="arch" type="xml">
+            <form string="Property Interest Message">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="property_id"/>
+                        <field name="message"/>
+                        <field name="submission_date" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+      <record id="action_property_interested_message" model="ir.actions.act_window">
+        <field name="name">Property Interest Messages</field>
+        <field name="res_model">property.interested.message</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No property interest messages have been recorded yet.
+            </p>
+        </field>
+    </record>
+
+
+     <menuitem id="property_menu" name="Property Management" parent="estate_main_menu" sequence="10"/>
+
+    <menuitem id="property_interested_menu"
+              name="Property Interest Messages"
+              parent="property_menu"
+              action="action_property_interested_message"
+              sequence="20"/>
+</odoo>
